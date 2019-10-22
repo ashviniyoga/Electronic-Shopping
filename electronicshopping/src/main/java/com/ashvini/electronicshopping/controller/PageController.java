@@ -1,18 +1,28 @@
 package com.ashvini.electronicshopping.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.ashvini.electronicshopping.dao.CategoryDAO;
+import com.ashvini.electronicshopping.dto.Category;
+
 @Controller
 public class PageController {
 
+	@Autowired
+	private CategoryDAO cdao;
+	
 	@RequestMapping(value = {"/","/home", "/index"})
 	public ModelAndView index() {
 		ModelAndView mv = new ModelAndView("page");
-		mv.addObject("title","Home");
+		mv.addObject("title","AshHome");
+		System.out.println("after the title added in model view");
+		mv.addObject("categories",cdao.listCategory());
+		System.out.println("After the list cat() called in model view");
 		mv.addObject("userClickHome", true);
 		return mv;
 	}
@@ -47,7 +57,8 @@ public class PageController {
 	@RequestMapping(value = {"/about"})
 	public ModelAndView about() {
 		ModelAndView mv = new ModelAndView("page");
-		mv.addObject("title","About Us");
+		mv.addObject("title","ASHAbout Us");
+		System.out.println("Inside the About section");
 		mv.addObject("userClickAbout", true);
 		return mv;
 	}
@@ -55,16 +66,39 @@ public class PageController {
 	@RequestMapping(value = {"/contact"})
 	public ModelAndView contact() {
 		ModelAndView mv = new ModelAndView("page");
-		mv.addObject("title","Contact");
+		mv.addObject("title","AshContact");
+		System.out.println("Inside the Contact section");
 		mv.addObject("userClickContact", true);
 		return mv;
 	}
 	
-	@RequestMapping(value = {"/listproduct"})
-	public ModelAndView listproduct() {
+	/* Method to load all the prodcts */
+	@RequestMapping(value = {"/show/all/products"})
+	public ModelAndView showAllProducts() {
 		ModelAndView mv = new ModelAndView("page");
-		mv.addObject("title","List Product");
-		mv.addObject("userClicklist", true);
+		mv.addObject("title","All Product");
+		System.out.println("Inside the SHOW ALL PRODUCT section");
+		mv.addObject("categories",cdao.listCategory());
+		mv.addObject("userClickAllProducts", true);
 		return mv;
 	}
+	
+	/* Method to load only one products */
+	@RequestMapping(value = {"/show/category/{id}/products"})
+	public ModelAndView showCategoryProduct(@PathVariable("id") int id) {
+		ModelAndView mv = new ModelAndView("page");
+		Category category = null;
+		category = cdao.get(id);
+		System.out.println("Inside the SHOW CATEGORY ID PRODUCT section");
+		mv.addObject("title",category.getName());
+		//to display list of category
+		mv.addObject("categories",cdao.listCategory());
+		//to display single category
+		mv.addObject("category", category);
+		System.out.println("category" + category);
+		mv.addObject("userClickCategoryProducts", true);
+		return mv;
+	}
+	
+	
 }

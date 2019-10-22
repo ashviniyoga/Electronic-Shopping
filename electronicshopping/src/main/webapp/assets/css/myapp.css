@@ -9,10 +9,14 @@ html {
 }
 
 body {
-    padding-top: 70px; /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
+    padding-top: 20px; /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
     height:100%;
-    color: red;
-    background-color: #8080ff;
+    
+}
+
+#title{
+	text-align: center;
+	color: yellow;
 }
 
 .slide-image {
@@ -61,7 +65,9 @@ footer {
 }
 
 
-/*  	custom styling */
+/*
+	custom styling
+*/
 
 .wrapper {	
 	min-height:100%;
@@ -75,7 +81,7 @@ footer {
 
 
 .footer {
-	
+	width:100%;
 	position:absolute;
 	bottom:20px;
 	height: 60px;

@@ -35,6 +35,7 @@
 </head>
 
 <body>
+<h1 id="title">Electronic Online Shopping</h1>
 <div class="wrapper">
 	<!-- -Navigation -->
 	<%@include file="./shared/navbar.jsp" %>
@@ -51,15 +52,15 @@
 	    <%@include file = "about.jsp" %>
 	    </c:if>
 	    
-	      <!-- About -->
-	    <c:if test="${userClicklist == true}">
-	    <%@include file = "listproduct.jsp" %>
-	    </c:if>
-	
-	
-	  <!-- Contact -->
+	    	
+	  <!-- load the Contact -->
 	    <c:if test="${userClickContact == true}">
 	    <%@include file = "contact.jsp" %>
+	    </c:if>
+	    
+	       <!-- View Product -->
+	    <c:if test="${userClickAllProducts == true  or userClickCategoryProducts==true}">
+	    <%@include file = "listproduct.jsp" %>
 	    </c:if>
 	
 	</div>

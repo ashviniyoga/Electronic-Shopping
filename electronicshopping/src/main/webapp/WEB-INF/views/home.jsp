@@ -1,15 +1,11 @@
+ 
 <div class="container">
-
+		
         <div class="row">
 
             <div class="col-md-3">
-                <p class="lead">Shop Name</p>
-                <div class="list-group">
-                    <a href="#" class="list-group-item">Laptop</a>
-                    <a href="#" class="list-group-item">Mobiles</a>
-                    <a href="#" class="list-group-item">Television</a>
-                </div>
-            </div>
+             <%@include file="./shared/sidebar.jsp" %>
+            </div>   
 
             <div class="col-md-9">
 

@@ -13,6 +13,14 @@
 		<spring.version>5.1.10.RELEASE</spring.version>
 	</properties>
   <dependencies>
+  
+  <!-- Linking backend project to front end project -->
+	 <dependency>
+		 <groupId>com.ashvini</groupId>
+		 <artifactId>electronicshoppingbackend</artifactId>
+		 <version>0.0.1-SNAPSHOT</version>
+	 </dependency>
+	 
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
